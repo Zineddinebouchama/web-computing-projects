@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Fenoms</title>
+    <link rel="stylesheet" href="roth.css">
+</head>
+<body>
+<h1> Roth IRA Estimator </h1>
+<form>
+    <label for="txtIncome">Enter Income (Must be less than $140,000)</label>
+    <input type="text" id="txtIncome">
+    <br>
+    <label for="txtContribution">Percentage to Invest (Enter value in % less than 4.2)</label>
+    <input type="text" id="txtContribution">
+    <button type="button" onclick="calculateRothIRA()">Calculate my Contribution</button>
+</form>
+
+<div id="result" class="format-output"></div>
+<script>
+    function calculateRothIRA() {
+        var income = parseFloat(document.getElementById("txtIncome").value);
+        var contribution = parseFloat(document.getElementById("txtContribution").value);
+         
+        if (income > 140000) {
+            document.getElementById("result").innerHTML =
+                "Your income exceeds the maximum allowed, so you are not eligible for a Roth IRA.";
+        }
+        else {
+            var investment = income * (contribution / 100);
+
+            document.getElementById("result").innerHTML =
+                "For an income of $" + income +
+                " and an investment percentage of " + contribution +
+                "%, you would invest $" + investment.toFixed(0) +
+                ".<p>Good luck!</p>";
+    }
+}
+</script>
+<!-- Padding adds space inside an element's border, 
+ while margin adds space outside the border. -->
+
+ <!-- Students may only use JavaScript code covered in class; using unfamiliar code without 
+researching it for the assignment or receiving the professor’s permission beforehand may be 
+considered an academic integrity violation.-->
+</body>
+</html>
