@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DePaul Delights!</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <header>
+    <h1>DePaul Delights!</h1>
+    <h2>Make me a Sandwich</h2>
+    </header>
+
+    <main>
+    <p>
+        Select your sandwich:
+        <select id="selSandwich">
+            <option value="7">Vegetarian ($7)</option>
+            <option value="8">Roast Beef ($8)</option>
+            <option value="9">Shrimp ($9)</option>
+        </select>
+    </p>
+
+    <h3>Options:</h3>
+
+    <p>
+        Avocado (Add $1.00)
+        <input type="checkbox" id="chkAvocado">
+    </p>
+
+    <p>
+        Artisanal Bun (Add $1.25)
+        <input type="checkbox" id="chkBun">
+    </p>
+
+    <h3>Discount for DePaul Community</h3>
+
+    <p>
+        Student? (20% off)
+        <input type="radio" id="radStudent" name="discount">
+    </p>
+
+    <p>
+        Staff? (10% off)
+        <input type="radio" id="radStaff" name="discount">
+    </p>
+
+    <p>
+        Faculty? (10% off)
+        <input type="radio" id="radFaculty" name="discount">
+    </p>
+
+    <button onclick="calculateSandwich()">
+        Order My Sandwich
+    </button>
+
+    <div id="output"></div>
+    </main>
+
+
+    <script>
+
+        function calculateSandwich() {
+
+            var cost;
+            var sandwich;
+            var outputString;
+
+            if (document.getElementById("selSandwich").value == "7") {
+                cost = 7;
+                sandwich = "Vegetarian";
+            }
+
+            else if (document.getElementById("selSandwich").value == "8") {
+                cost = 8;
+                sandwich = "Roast Beef";
+            }
+
+            else if (document.getElementById("selSandwich").value == "9") {
+                cost = 9;
+                sandwich = "Shrimp";
+            }
+
+            if (document.getElementById("chkAvocado").checked) {
+                cost = cost + 1;
+            }
+
+            if (document.getElementById("chkBun").checked) {
+                cost = cost + 1.25;
+            }
+
+            if (document.getElementById("radStudent").checked) {
+                cost = cost * 0.80;
+            }
+
+            else if (document.getElementById("radStaff").checked ||
+                     document.getElementById("radFaculty").checked) {
+                cost = cost * 0.90;
+            }
+
+            cost = cost.toFixed(2);
+
+    outputString = "You ordered a " + sandwich + " sandwich. Your total cost is $" + cost + ".";
+
+            document.getElementById("output").innerHTML = outputString;
+    }
+
+    </script>
+
+</body>
+</html>
