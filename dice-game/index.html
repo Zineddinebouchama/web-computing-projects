@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="assignment_8.css">
+</head>
+
+<body>
+    <header>
+        <h1>Dice Game!</h1>
+    </header>
+
+    <main>
+    <p>Enter the amount you would like to bet:</p>
+    <label for="txtBet">Bet</label>
+    <input type="text" id="txtBet">
+
+    <button type="button" onclick="playGame()">Roll the Die!</button>
+
+    <div id="output"></div>
+    </main>
+    <script>
+    function playGame(){
+    var bet;
+    var roll;
+    var winnings;
+    var s;
+
+    bet = parseFloat(document.getElementById("txtBet").value);
+
+    roll = (Math.random()*6)+1;
+    roll = parseInt(roll);
+
+    s = "";
+
+    if (roll == 1 || roll == 6)
+    {
+        winnings = bet * 1.25;
+
+        s = s + "You rolled a " + roll + ". You won! You have won $" + winnings.toFixed(2) + ". Congratulations!";
+    }
+    else
+    {
+        s = s + "You rolled a " + roll + ". Unfortunately, you have lost. Sorry!";
+    }
+
+    document.getElementById("output").innerHTML = s;
+}
+    </script>
+</body>
+
+</html>
